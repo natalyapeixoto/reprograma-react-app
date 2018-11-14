@@ -1,0 +1,17 @@
+.page-not-found {
+  padding: 1.5rem 1rem 0;
+  text-align: center;
+}
+
+.page-not-found__image {
+  width: 40%;
+  height: auto;
+  border-radius: 15px;
+  filter:contrast(3)
+}
+
+@media (min-width: 992px) {
+  .page-not-found {
+      padding: 3rem 10% 0;
+  }
+}
