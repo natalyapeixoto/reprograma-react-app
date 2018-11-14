@@ -11,7 +11,7 @@ class Input extends React.Component {
         this.state = {message : null}
       }
       hasError = () => {
-        if(this.state.message){
+        if(this.state.message === null || this.state.message !== ''){
           return true
         }else{
           return false
@@ -23,7 +23,7 @@ class Input extends React.Component {
         let message = ''
         const regex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@(([[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 
-        console.log(value)
+        console.log(this.props.minLength, value.length)
         if(this.props.required && value.trim() === ''){
               message = 'Campo Obrigatório'
         } else if(this.props.minLength && value.length < this.props.minLength) {
@@ -31,7 +31,7 @@ class Input extends React.Component {
         }else if (this.props.type ==='email' && !regex.test(value) ){
               message = 'Digite um email válido'
         }
-        this.setState({message:message}, this.props.onChange())
+        this.setState({message:message}, this.props.onChange)
       }
       render(){
         return (
@@ -44,6 +44,7 @@ class Input extends React.Component {
                 className='input'
                 placeholder={this.props.placeholder}
                 required= {this.props.required}
+
               />
               <p className='input__erro'>{this.state.message}</p>
          </React.Fragment> 
